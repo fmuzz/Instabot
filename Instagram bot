@@ -1,0 +1,40 @@
+from selenium import webdriver
+from time import sleep
+from secret import Iusername, Ipassword, message
+
+
+#username, password, and message are secret and adjustable
+
+class instaBot():
+
+    def __init__(self):
+        self.driver = webdriver.Chrome()
+        self.driver.get("https://instagram.com")
+        sleep(3)
+
+    def login(self):
+        self.driver.find_element_by_xpath("//input[@name='username']").send_keys(Iusername)
+        self.driver.find_element_by_xpath("//input[@name='password']").send_keys(Ipassword)
+        self.driver.find_element_by_xpath("//button[@type='submit']").click()
+        sleep(4)
+        #command to close notifications tab
+        self.driver.find_element_by_xpath("//button[contains(text(), 'Not Now')]").click()
+        sleep(2)
+
+    def Message(self):
+        #command to access DM's
+        self.driver.find_element_by_xpath("//a[@href='/direct/inbox/']").click()
+        sleep(2)
+        #command to click on who you want to message, this is dependent on what number groupchat, last number is the indicator
+        #in this case I'd would be sending a message to 2nd groupchat
+        self.driver.find_element_by_xpath("/html/body/div[1]/section/div/div[2]/div/div/div[1]/div[2]/div/div/div/div/div[2]/a").click()
+        #command to access the text line
+        self.driver.find_element_by_xpath("//textarea[@placeholder='Message...']").click()
+        #command to input message
+        self.driver.find_element_by_xpath("//textarea[@data-focus-visible-added='']").send_keys(message)
+        #command to click 'send'
+        self.driver.find_element_by_xpath("/html/body/div[1]/section/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div/div[3]/button").click()
+
+bot = instaBot()
+bot.login()
+bot.Message()
