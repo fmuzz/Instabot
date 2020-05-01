@@ -33,7 +33,7 @@ class instaBot():
         #command to input message
         self.driver.find_element_by_xpath("//textarea[@data-focus-visible-added='']").send_keys(message)
         #command to click 'send'
-        self.driver.find_element_by_xpath("/html/body/div[1]/section/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div/div[3]/button").click()
+        self.driver.find_element_by_xpath("//button[contains(text(), 'Send')]").click()
 
 bot = instaBot()
 bot.login()
