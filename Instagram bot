@@ -25,9 +25,8 @@ class instaBot():
         #command to access DM's
         self.driver.find_element_by_xpath("//a[@href='/direct/inbox/']").click()
         sleep(2)
-        #command to click on who you want to message, this is dependent on what number groupchat, last number is the indicator
-        #in this case I'd would be sending a message to 2nd groupchat
-        self.driver.find_element_by_xpath("/html/body/div[1]/section/div/div[2]/div/div/div[1]/div[2]/div/div/div/div/div[2]/a").click()
+        ##input who you want to message in ' '
+        self.driver.find_element_by_xpath("//div[contains(text(), ' ')]").click()
         #command to access the text line
         self.driver.find_element_by_xpath("//textarea[@placeholder='Message...']").click()
         #command to input message
